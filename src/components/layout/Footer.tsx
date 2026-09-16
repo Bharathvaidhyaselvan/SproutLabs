@@ -25,15 +25,15 @@ export default function Footer() {
   const showTopWave = pathname === '/' || pathname === '/contact-us';
 
   return (
-    <footer className="relative overflow-hidden bg-brand-navy pb-10 text-white pt-24">
+    <footer className="relative overflow-hidden bg-brand-navy px-4 pb-8 pt-20 text-white sm:px-0 sm:pb-10 sm:pt-24">
       {showTopWave && (
         <div className="absolute left-0 top-0 z-20 w-full" aria-hidden>
           <WaveBottom fill="fill-white" />
         </div>
       )}
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
-        <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      <div className="relative z-10 mx-auto max-w-7xl sm:px-6 md:px-12">
+        <div className="grid grid-cols-1 items-start gap-10 sm:gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {/* Brand Col */}
           <div className="flex flex-col gap-5">
             <Link to="/" className="flex items-center gap-2">

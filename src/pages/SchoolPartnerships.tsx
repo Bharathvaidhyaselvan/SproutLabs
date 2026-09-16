@@ -23,13 +23,12 @@ const models = [
 export default function SchoolPartnerships() {
   return (
     <>
-      {/* Inner Page Hero */}
-      <section className="bg-brand-cream pt-20 pb-24 relative overflow-hidden text-center">
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
+      <section className="relative overflow-hidden bg-brand-cream px-4 pb-20 pt-16 text-center sm:px-6 sm:pb-24 sm:pt-20">
+        <div className="relative z-10 mx-auto max-w-4xl">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-brand-navy mb-4"
+            className="mb-4 font-heading text-3xl font-black text-brand-navy sm:text-4xl md:text-5xl lg:text-6xl"
           >
             School Partnerships
           </motion.h1>
@@ -49,12 +48,11 @@ export default function SchoolPartnerships() {
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="py-24 max-w-7xl mx-auto px-6 md:px-12">
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 md:px-12 md:py-24">
         <SectionHeading 
           eyebrow="Collaboration"
           title="Collaboration with Schools and Institutions"
-          description="We work closely with principals, academic leaders, and institutional heads to integrate hands-on STEM and innovation learning seamlessly into their existing ecosystem."
+          description="SproutLabs collaborates with schools, colleges, training institutes, principals, academic leaders, and educational organizations to create meaningful student learning journeys. Our approach is adaptable and aligned to the goals of each institution."
         />
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
@@ -77,15 +75,15 @@ export default function SchoolPartnerships() {
       </section>
 
       {/* Models */}
-      <section className="py-32 bg-brand-lavender relative overflow-hidden">
-        <div className="absolute top-0 left-0 z-20 w-full">
+      <section className="relative overflow-hidden bg-brand-lavender py-20 sm:py-28 md:py-32">
+        <div className="absolute left-0 top-0 z-20 w-full">
           <WaveBottom fill="fill-brand-offwhite" />
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 mt-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="relative aspect-square max-w-md mx-auto lg:max-w-none">
-            <div className="absolute inset-0 bg-brand-teal rounded-[40px] transform rotate-3"></div>
-            <div className="absolute inset-0 -rotate-3 overflow-hidden rounded-[40px] border-4 border-brand-paleblue bg-white">
+        <div className="relative z-10 mx-auto mt-8 grid max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:mt-12 sm:px-6 md:px-12 lg:grid-cols-2 lg:gap-16">
+          <div className="relative mx-auto aspect-square w-full max-w-sm lg:mx-0 lg:max-w-none">
+            <div className="absolute inset-0 rotate-3 rounded-[32px] bg-brand-teal sm:rounded-[40px]"></div>
+            <div className="absolute inset-0 -rotate-3 overflow-hidden rounded-[32px] border-4 border-brand-paleblue bg-white sm:rounded-[40px]">
               <img
                 src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80"
                 alt="Educators collaborating on school partnership programs"

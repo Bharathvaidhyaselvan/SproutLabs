@@ -3,27 +3,29 @@ import { SectionHeading } from '../components/common/SectionHeading';
 import { WaveTop } from '../components/common/Waves';
 import CTASection from '../components/sections/CTASection';
 
+const ABOUT_IMAGE =
+  'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80';
+
 export default function About() {
   return (
     <>
-      {/* Inner Page Hero */}
-      <section className="bg-brand-cream pt-20 pb-24 relative overflow-hidden text-center">
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <motion.h1 
+      <section className="relative overflow-hidden bg-brand-cream px-4 pb-20 pt-16 text-center sm:px-6 sm:pb-24 sm:pt-20">
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-brand-navy mb-4"
+            className="mb-4 font-heading text-3xl font-black text-brand-navy sm:text-4xl md:text-5xl lg:text-6xl"
           >
             About Us
           </motion.h1>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="flex items-center justify-center gap-2 text-brand-navy/70 text-sm font-bold uppercase tracking-wider"
+            className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-navy/70 sm:text-sm"
           >
             <span>Home</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-orange" />
             <span className="text-brand-teal">About Us</span>
           </motion.div>
         </div>
@@ -32,41 +34,43 @@ export default function About() {
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-24 max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24">
+        <div className="mb-16 grid grid-cols-1 items-center gap-10 lg:mb-24 lg:grid-cols-2 lg:gap-16">
           <div className="order-2 lg:order-1">
-            <div className="relative aspect-[4/3] rounded-[40px] bg-brand-paleblue overflow-hidden shadow-sm border-4 border-white flex items-center justify-center">
-              <span className="text-brand-teal font-heading font-bold">About Image Placeholder</span>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] border-4 border-white bg-brand-paleblue shadow-sm sm:rounded-[40px]">
+              <img src={ABOUT_IMAGE} alt="Students engaged in classroom learning" className="h-full w-full object-cover" loading="lazy" />
             </div>
           </div>
-          <div className="order-1 lg:order-2 flex flex-col gap-6">
-            <SectionHeading eyebrow="Our Story" title="Pioneering Future-Ready Education" alignment="left" />
-            <p className="text-brand-navy/80 leading-relaxed text-lg">
-              SproutLabs, an initiative of Verena Haptic and VR Systems Pvt. Ltd., was founded with a singular vision: to bridge the gap between traditional education and real-world innovation.
+          <div className="order-1 flex flex-col gap-5 lg:order-2 sm:gap-6">
+            <SectionHeading eyebrow="Who We Are" title="Bridging Education and Real-World Innovation" alignment="left" />
+            <p className="text-base leading-relaxed text-brand-navy/80 sm:text-lg">
+              SproutLabs is a learning-focused startup designed to bridge the gap between education and real-world innovation. Our goal is to make learning interactive, practical, and inspiring for students across different age groups and learning levels.
             </p>
-            <p className="text-brand-navy/80 leading-relaxed">
-              We believe that the best way to learn is by doing. Our hands-on programs are designed to spark curiosity, build creative confidence, and develop practical skills that students will need in an rapidly evolving digital world. From foundational STEM concepts in primary school to advanced robotics and design thinking in high school, we provide continuous learning pathways.
+            <p className="leading-relaxed text-brand-navy/80">
+              As an initiative of Verena Haptic and VR Systems Pvt. Ltd., SproutLabs is rooted in innovation-led learning and future-ready education. We believe that students learn best when they explore, build, experiment, and collaborate in meaningful ways.
             </p>
           </div>
         </div>
 
-        {/* Mission & Vision Full width */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-           <div className="bg-brand-cream rounded-[40px] p-10 lg:p-14 border border-brand-yellow/30">
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 text-brand-orange shadow-sm text-2xl font-bold">🎯</div>
-              <h3 className="text-3xl font-heading font-black mb-4 text-brand-navy">Our Mission</h3>
-              <p className="text-brand-navy/80 text-lg leading-relaxed">
-                To empower students with practical exposure, creative confidence, and innovation skills through thoughtfully designed programs that combine learning with doing. We strive to make high-quality experiential learning accessible to every student.
-              </p>
-           </div>
-           <div className="bg-brand-paleblue rounded-[40px] p-10 lg:p-14 border border-brand-teal/30">
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 text-brand-teal shadow-sm text-2xl font-bold">👁️</div>
-              <h3 className="text-3xl font-heading font-black mb-4 text-brand-navy">Our Vision</h3>
-              <p className="text-brand-navy/80 text-lg leading-relaxed">
-                We envision a future where every student has access to engaging, hands-on, and future-focused learning experiences that prepare them to think critically, innovate confidently, and participate meaningfully in a changing world.
-              </p>
-           </div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+          <div className="rounded-[28px] border border-brand-yellow/30 bg-brand-cream p-6 sm:rounded-[40px] sm:p-10 lg:p-14">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-2xl font-bold text-brand-orange shadow-sm sm:mb-6 sm:h-16 sm:w-16">
+              🎯
+            </div>
+            <h3 className="mb-3 font-heading text-2xl font-black text-brand-navy sm:mb-4 sm:text-3xl">Our Mission</h3>
+            <p className="text-base leading-relaxed text-brand-navy/80 sm:text-lg">
+              Our mission is to empower students with practical exposure, creative confidence, and innovation skills through thoughtfully designed programs that combine learning with doing.
+            </p>
+          </div>
+          <div className="rounded-[28px] border border-brand-teal/30 bg-brand-paleblue p-6 sm:rounded-[40px] sm:p-10 lg:p-14">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-2xl font-bold text-brand-teal shadow-sm sm:mb-6 sm:h-16 sm:w-16">
+              👁️
+            </div>
+            <h3 className="mb-3 font-heading text-2xl font-black text-brand-navy sm:mb-4 sm:text-3xl">Our Vision</h3>
+            <p className="text-base leading-relaxed text-brand-navy/80 sm:text-lg">
+              We envision a future where every student has access to engaging, hands-on, and future-focused learning experiences that prepare them to think critically, innovate confidently, and participate meaningfully in a changing world.
+            </p>
+          </div>
         </div>
       </section>
 

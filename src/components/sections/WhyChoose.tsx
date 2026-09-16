@@ -16,11 +16,11 @@ const reasons = [
 
 export default function WhyChoose() {
   return (
-    <section className="py-24 bg-brand-lavender relative overflow-hidden">
-      <DecorativeElement type="blob2" className="w-[600px] h-[600px] -top-20 -left-20 text-white/50" />
+    <section className="relative overflow-hidden bg-brand-lavender py-16 sm:py-20 md:py-24">
+      <DecorativeElement type="blob2" className="pointer-events-none -left-20 -top-20 hidden h-[400px] w-[400px] text-white/50 sm:block md:h-[600px] md:w-[600px]" />
       
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
           
           <div className="order-2 lg:order-1 relative">
             <motion.div

@@ -1,82 +1,65 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { WaveTop, WaveBottom } from '../components/common/Waves';
+import { WaveTop } from '../components/common/Waves';
 import CTASection from '../components/sections/CTASection';
 import { Button } from '../components/common/Button';
 import { ArrowLeft } from 'lucide-react';
+import { programsById } from '../data/programs';
 
-const programsData: Record<string, any> = {
-  'foundational-stem-experiences': {
-    title: 'Foundational STEM Experiences',
-    subtitle: 'Building the building blocks of science and technology.',
-    color: 'bg-brand-yellow',
-    courses: ['STEM Discovery Workshops', 'Young Inventors Program', 'Everyday Science and Innovation']
-  },
-  'coding-and-digital-creativity': {
-    title: 'Coding and Digital Creativity',
-    subtitle: 'From logic to creation in the digital realm.',
-    color: 'bg-brand-orange',
-    courses: ['Code Blocks for Game Creation', 'Physics Through Play', 'IoT Explorers', 'Robotics for Young Innovators', 'Art and Design Studio']
-  },
-  'innovation-and-design-thinking': {
-    title: 'Innovation and Design Thinking',
-    subtitle: 'Structuring creativity to solve real-world problems.',
-    color: 'bg-brand-teal',
-    courses: ['Innovation Lab Sessions', 'Design Thinking for Students', 'Build, Create, Present']
-  },
-  'certified-three-month-learning-pathways': {
-    title: 'Certified Three-Month Learning Pathways',
-    subtitle: 'Deep-dive structured courses for substantial skill building.',
-    color: 'bg-brand-lavender',
-    courses: ['STEM Foundations Certificate', 'Innovation Skills Certificate', 'Future Skills Explorer Certificate']
-  },
-  'competitions-and-challenge-based-learning': {
-    title: 'Competitions and Challenge-Based Learning',
-    subtitle: 'Putting skills to the test in collaborative environments.',
-    color: 'bg-brand-cream',
-    courses: ['Innovation Challenges', 'STEM Competitions', 'School Showcase Programs']
-  },
-  'custom-programs-for-institutions': {
-    title: 'Custom Programs for Institutions',
-    subtitle: 'Tailored solutions for your educational goals.',
-    color: 'bg-brand-paleblue',
-    courses: ['Weekend workshops', 'Club journeys', 'Bootcamps', 'Holiday intensives', 'Certified three-month tracks']
-  }
+const PROGRAM_IMAGES: Record<string, string> = {
+  'foundational-stem-experiences':
+    'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1000&q=80',
+  'coding-and-digital-creativity':
+    'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1000&q=80',
+  'innovation-and-design-thinking':
+    'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80',
+  'certified-three-month-learning-pathways':
+    'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80',
+  'competitions-and-challenge-based-learning':
+    'https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&w=1000&q=80',
+  'custom-programs-for-institutions':
+    'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80',
 };
 
 export default function ProgramDetail() {
   const { id } = useParams<{ id: string }>();
-  const program = id ? programsData[id] : null;
+  const program = id ? programsById[id] : null;
 
   if (!program) {
-    return <div className="p-24 text-center">Program not found.</div>;
+    return (
+      <div className="px-4 py-20 text-center sm:py-24">
+        <p className="mb-6 text-brand-navy/70">Program not found.</p>
+        <Button to="/our-programs" variant="primary">
+          Back to Programs
+        </Button>
+      </div>
+    );
   }
 
   return (
     <>
-      <section className={`${program.color} pt-20 pb-24 relative overflow-hidden text-center`}>
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <motion.div
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             className="mb-8 flex justify-center"
-          >
-             <Link to="/our-programs" className="inline-flex items-center gap-2 text-brand-navy/60 hover:text-brand-navy transition-colors bg-white/50 px-4 py-2 rounded-full text-sm font-bold">
-               <ArrowLeft className="w-4 h-4" /> Back to Programs
-             </Link>
+      <section className={`${program.color} relative overflow-hidden px-4 pb-20 pt-16 text-center sm:px-6 sm:pb-24 sm:pt-20`}>
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-6 flex justify-center sm:mb-8">
+            <Link
+              to="/our-programs"
+              className="inline-flex items-center gap-2 rounded-full bg-white/50 px-4 py-2 text-sm font-bold text-brand-navy/60 transition-colors hover:text-brand-navy"
+            >
+              <ArrowLeft className="h-4 w-4" /> Back to Programs
+            </Link>
           </motion.div>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-brand-navy mb-4"
+            className="mb-4 font-heading text-3xl font-black text-brand-navy sm:text-4xl md:text-5xl lg:text-6xl"
           >
             {program.title}
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-brand-navy/80 text-xl font-medium"
+            className="text-base font-medium text-brand-navy/80 sm:text-lg md:text-xl"
           >
             {program.subtitle}
           </motion.p>
@@ -86,34 +69,43 @@ export default function ProgramDetail() {
         </div>
       </section>
 
-      <section className="py-24 max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="relative aspect-square rounded-[40px] bg-white border border-brand-paleblue overflow-hidden shadow-sm flex items-center justify-center p-12">
-             <div className={`w-full h-full rounded-[24px] flex items-center justify-center ${program.color}`}>
-                <span className="font-heading font-bold text-brand-navy/50 text-xl text-center px-4">Program Illustration<br/>Placeholder</span>
-             </div>
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 md:px-12 md:py-24">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] border border-brand-paleblue bg-white shadow-sm sm:aspect-square sm:rounded-[40px]">
+            <img
+              src={PROGRAM_IMAGES[program.id]}
+              alt={program.title}
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
           </div>
-          
+
           <div>
-            <h2 className="text-3xl font-heading font-black text-brand-navy mb-8">What's Included</h2>
-            <ul className="flex flex-col gap-4">
-              {program.courses.map((course: string, i: number) => (
-                <motion.li 
-                  key={i}
+            <p className="mb-8 text-base leading-relaxed text-brand-navy/80 sm:text-lg">{program.description}</p>
+            <h2 className="mb-5 font-heading text-2xl font-black text-brand-navy sm:mb-8 sm:text-3xl">What&apos;s Included</h2>
+            <ul className="flex flex-col gap-3 sm:gap-4">
+              {program.courses.map((course, i) => (
+                <motion.li
+                  key={course.name}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-4 bg-white p-5 rounded-2xl shadow-sm border border-brand-paleblue"
+                  transition={{ delay: i * 0.08 }}
+                  className="rounded-2xl border border-brand-paleblue bg-white p-4 shadow-sm sm:p-5"
                 >
-                  <div className={`w-3 h-3 rounded-full ${program.color} shrink-0`}></div>
-                  <span className="text-brand-navy font-bold text-lg">{course}</span>
+                  <div className="mb-1 flex items-center gap-3">
+                    <div className={`h-3 w-3 shrink-0 rounded-full ${program.color}`} />
+                    <span className="font-heading text-base font-bold text-brand-navy sm:text-lg">{course.name}</span>
+                  </div>
+                  <p className="pl-6 text-sm leading-relaxed text-brand-navy/70">{course.description}</p>
                 </motion.li>
               ))}
             </ul>
-            
-            <div className="mt-12">
-               <Button to="/contact-us" variant="primary">Enquire About This Program</Button>
+
+            <div className="mt-8 sm:mt-12">
+              <Button to="/contact-us" variant="primary" className="w-full justify-center sm:w-auto">
+                Enquire About This Program
+              </Button>
             </div>
           </div>
         </div>

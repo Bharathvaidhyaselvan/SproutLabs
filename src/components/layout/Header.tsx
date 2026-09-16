@@ -81,10 +81,10 @@ export default function Header() {
       </div>
 
       {/* Main Navigation */}
-      <div className="px-6 md:px-12 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 z-50">
-          <div className="w-10 h-10 bg-brand-teal rounded-xl flex items-center justify-center text-white font-bold text-xl">S</div>
-          <span className="text-2xl font-heading font-black text-brand-navy tracking-tight">SproutLabs</span>
+      <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4 md:px-12">
+        <Link to="/" className="z-50 flex items-center gap-2">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-teal text-lg font-bold text-white sm:h-10 sm:w-10 sm:text-xl">S</div>
+          <span className="font-heading text-xl font-black tracking-tight text-brand-navy sm:text-2xl">SproutLabs</span>
         </Link>
 
         {/* Desktop Nav */}

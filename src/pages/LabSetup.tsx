@@ -2,27 +2,28 @@ import { motion } from 'motion/react';
 import { WaveTop } from '../components/common/Waves';
 import { SectionHeading } from '../components/common/SectionHeading';
 import CTASection from '../components/sections/CTASection';
+import { Button } from '../components/common/Button';
 
 export default function LabSetup() {
   return (
     <>
-      <section className="bg-brand-cream pt-20 pb-24 relative overflow-hidden text-center">
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <motion.h1 
+      <section className="relative overflow-hidden bg-brand-cream px-4 pb-20 pt-16 text-center sm:px-6 sm:pb-24 sm:pt-20">
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-brand-navy mb-4"
+            className="mb-4 font-heading text-3xl font-black text-brand-navy sm:text-4xl md:text-5xl lg:text-6xl"
           >
             Lab Setup & Support
           </motion.h1>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="flex items-center justify-center gap-2 text-brand-navy/70 text-sm font-bold uppercase tracking-wider"
+            className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-navy/70 sm:text-sm"
           >
             <span>Home</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-orange" />
             <span className="text-brand-teal">Lab Setup</span>
           </motion.div>
         </div>
@@ -31,26 +32,32 @@ export default function LabSetup() {
         </div>
       </section>
 
-      <section className="py-24 max-w-7xl mx-auto px-6 md:px-12">
-        <SectionHeading 
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 md:px-12 md:py-24">
+        <SectionHeading
           eyebrow="Infrastructure"
           title="Building Learning Environments"
           description="SproutLabs supports institutions in creating practical and engaging learning environments through lab setup collaboration, implementation guidance, and program alignment."
         />
-        
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-           <div className="bg-brand-cream p-10 rounded-[32px]">
-             <h3 className="text-2xl font-heading font-bold mb-4 text-brand-navy">Lab Infrastructure</h3>
-             <p className="text-brand-navy/80 leading-relaxed">
-               We help you select, source, and set up the right equipment for robotics, IoT, and maker spaces, ensuring your investment directly translates to student outcomes.
-             </p>
-           </div>
-           <div className="bg-brand-paleblue p-10 rounded-[32px]">
-             <h3 className="text-2xl font-heading font-bold mb-4 text-brand-navy">Staff Augmentation</h3>
-             <p className="text-brand-navy/80 leading-relaxed">
-               Need expert facilitators? We provide external trainers, delivery support, and co-facilitators to help your institution run successful innovation programs without the overhead of full-time specialized staff.
-             </p>
-           </div>
+
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-14 sm:gap-6 md:mt-16 md:grid-cols-2 md:gap-8">
+          <div className="rounded-[28px] bg-brand-cream p-6 sm:rounded-[32px] sm:p-10">
+            <h3 className="mb-3 font-heading text-xl font-bold text-brand-navy sm:mb-4 sm:text-2xl">Lab Setup Collaboration</h3>
+            <p className="leading-relaxed text-brand-navy/80">
+              We help institutions create practical and engaging learning environments through lab setup collaboration, implementation guidance, and program alignment that supports hands-on STEM and innovation learning.
+            </p>
+          </div>
+          <div className="rounded-[28px] bg-brand-paleblue p-6 sm:rounded-[32px] sm:p-10">
+            <h3 className="mb-3 font-heading text-xl font-bold text-brand-navy sm:mb-4 sm:text-2xl">Staff Augmentation</h3>
+            <p className="leading-relaxed text-brand-navy/80">
+              We also offer flexible staff augmentation models for schools and institutions that need external trainers, facilitators, or delivery support based on academic requirements and scale.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-10 text-center sm:mt-12">
+          <Button to="/contact-us" variant="primary" className="w-full justify-center sm:w-auto">
+            Discuss Lab Setup
+          </Button>
         </div>
       </section>
 
