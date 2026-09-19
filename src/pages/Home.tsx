@@ -1,6 +1,6 @@
 import Hero from '../components/sections/Hero';
-import AboutHome from '../components/sections/AboutHome';
-import ProgramsHome from '../components/sections/ProgramsHome';
+// import AboutHome from '../components/sections/AboutHome';
+// import ProgramsHome from '../components/sections/ProgramsHome';
 import AgePathways from '../components/sections/AgePathways';
 import Process from '../components/sections/Process';
 import WhyChoose from '../components/sections/WhyChoose';
@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <AboutHome />
-      <ProgramsHome />
+      {/* <AboutHome /> */}
+      {/* <ProgramsHome /> */}
       <AgePathways />
       <Process />
       <WhyChoose />

@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Mail, MapPin, Phone, Facebook, Instagram, Twitter, Linkedin, Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { cn } from '../../lib/utils';
+import { SiteLogo } from '../common/SiteLogo';
 import { motion, AnimatePresence } from 'motion/react';
 
 const navLinks = [
@@ -82,9 +83,8 @@ export default function Header() {
 
       {/* Main Navigation */}
       <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4 md:px-12">
-        <Link to="/" className="z-50 flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-teal text-lg font-bold text-white sm:h-10 sm:w-10 sm:text-xl">S</div>
-          <span className="font-heading text-xl font-black tracking-tight text-brand-navy sm:text-2xl">SproutLabs</span>
+        <Link to="/" className="z-50 flex shrink-0 items-center">
+          <SiteLogo className="h-9 w-auto sm:h-11" />
         </Link>
 
         {/* Desktop Nav */}

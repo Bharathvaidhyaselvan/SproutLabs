@@ -10,7 +10,7 @@ interface CTASectionProps {
 
 export default function CTASection({
   topFill = 'fill-brand-cream',
-  bottomFill = 'fill-brand-navy',
+  bottomFill = 'fill-brand-cream',
 }: CTASectionProps) {
   return (
     <section className="relative overflow-hidden bg-brand-teal pb-36 pt-32 text-center">

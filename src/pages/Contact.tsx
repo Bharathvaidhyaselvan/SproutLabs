@@ -9,14 +9,14 @@ export default function Contact() {
       {/* Inner Page Hero */}
       <section className="bg-brand-cream pt-20 pb-24 relative overflow-hidden text-center">
         <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-brand-navy mb-4"
           >
             Contact Us
           </motion.h1>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -35,7 +35,7 @@ export default function Contact() {
       {/* Contact Content */}
       <section className="py-24 max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          
+
           {/* Left Info */}
           <div className="flex flex-col gap-10">
             <div>
@@ -89,7 +89,7 @@ export default function Contact() {
           {/* Right Form */}
           <div className="bg-white rounded-[40px] p-8 md:p-12 shadow-sm border border-brand-paleblue">
             <h3 className="text-2xl font-heading font-black text-brand-navy mb-8">Send an Enquiry</h3>
-            
+
             <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
@@ -138,7 +138,7 @@ export default function Contact() {
               </Button>
             </form>
           </div>
-          
+
         </div>
       </section>
     </>
