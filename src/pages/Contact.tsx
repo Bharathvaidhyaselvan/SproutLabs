@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { WaveTop } from '../components/common/Waves';
-import { MapPin, Phone, Mail, Send } from 'lucide-react';
-import { Button } from '../components/common/Button';
+import { MapPin, Phone, Mail } from 'lucide-react';
+import { EnquiryForm } from '../components/enquiry/EnquiryForm';
 
 export default function Contact() {
   return (
@@ -35,7 +35,6 @@ export default function Contact() {
       {/* Contact Content */}
       <section className="py-24 max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-
           {/* Left Info */}
           <div className="flex flex-col gap-10">
             <div>
@@ -53,8 +52,8 @@ export default function Contact() {
                 <div>
                   <h3 className="text-xl font-bold font-heading text-brand-navy mb-2">Our Location</h3>
                   <p className="text-brand-navy/70 leading-relaxed">
-                    SproutLabs <br/>
-                    4/350, Valluvar Salai, Rayala Nagar,<br/>
+                    SproutLabs <br />
+                    4/350, Valluvar Salai, Rayala Nagar,<br />
                     Ramapuram, Chennai - 600056
                   </p>
                 </div>
@@ -66,7 +65,10 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold font-heading text-brand-navy mb-2">Phone Number</h3>
-                  <a href="tel:+917397499945" className="text-brand-navy/70 leading-relaxed hover:text-brand-teal transition-colors">
+                  <a
+                    href="tel:+917397499945"
+                    className="text-brand-navy/70 leading-relaxed hover:text-brand-teal transition-colors"
+                  >
                     +91 7397499945
                   </a>
                 </div>
@@ -78,7 +80,10 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold font-heading text-brand-navy mb-2">Email Address</h3>
-                  <a href="mailto:learn@sproutlabs.in" className="text-brand-navy/70 leading-relaxed hover:text-purple-600 transition-colors">
+                  <a
+                    href="mailto:learn@sproutlabs.in"
+                    className="text-brand-navy/70 leading-relaxed hover:text-purple-600 transition-colors"
+                  >
                     learn@sproutlabs.in
                   </a>
                 </div>
@@ -89,56 +94,8 @@ export default function Contact() {
           {/* Right Form */}
           <div className="bg-white rounded-[40px] p-8 md:p-12 shadow-sm border border-brand-paleblue">
             <h3 className="text-2xl font-heading font-black text-brand-navy mb-8">Send an Enquiry</h3>
-
-            <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="text-sm font-bold text-brand-navy">Name *</label>
-                  <input type="text" id="name" className="px-5 py-4 rounded-2xl bg-brand-cream/50 border border-transparent focus:border-brand-teal focus:bg-white outline-none transition-all" placeholder="John Doe" required />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-sm font-bold text-brand-navy">Email *</label>
-                  <input type="email" id="email" className="px-5 py-4 rounded-2xl bg-brand-cream/50 border border-transparent focus:border-brand-teal focus:bg-white outline-none transition-all" placeholder="john@example.com" required />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="phone" className="text-sm font-bold text-brand-navy">Phone Number *</label>
-                  <input type="tel" id="phone" className="px-5 py-4 rounded-2xl bg-brand-cream/50 border border-transparent focus:border-brand-teal focus:bg-white outline-none transition-all" placeholder="+91 xxxxx xxxxx" required />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="institution" className="text-sm font-bold text-brand-navy">Institution (Optional)</label>
-                  <input type="text" id="institution" className="px-5 py-4 rounded-2xl bg-brand-cream/50 border border-transparent focus:border-brand-teal focus:bg-white outline-none transition-all" placeholder="School / College Name" />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label htmlFor="program" className="text-sm font-bold text-brand-navy">Preferred Program</label>
-                <select id="program" className="px-5 py-4 rounded-2xl bg-brand-cream/50 border border-transparent focus:border-brand-teal focus:bg-white outline-none transition-all appearance-none cursor-pointer">
-                  <option value="">Select a program...</option>
-                  <option value="stem">Foundational STEM Experiences</option>
-                  <option value="coding">Coding and Digital Creativity</option>
-                  <option value="innovation">Innovation and Design Thinking</option>
-                  <option value="certified">Certified Three-Month Learning Pathways</option>
-                  <option value="competitions">Competitions and Challenge-Based Learning</option>
-                  <option value="custom">Custom Programs for Institutions</option>
-                  <option value="other">Other Inquiry</option>
-                </select>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label htmlFor="message" className="text-sm font-bold text-brand-navy">Message / Requirement *</label>
-                <textarea id="message" rows={4} className="px-5 py-4 rounded-2xl bg-brand-cream/50 border border-transparent focus:border-brand-teal focus:bg-white outline-none transition-all resize-none" placeholder="Tell us how we can help..." required></textarea>
-              </div>
-
-              <Button type="submit" variant="primary" className="mt-4 gap-2 py-4">
-                Send Enquiry
-                <Send className="w-5 h-5" />
-              </Button>
-            </form>
+            <EnquiryForm idPrefix="contact-enquiry" />
           </div>
-
         </div>
       </section>
     </>

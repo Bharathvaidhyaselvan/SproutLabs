@@ -9,37 +9,47 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
-export function Button({ 
-  children, 
-  variant = 'primary', 
-  to, 
-  onClick, 
+export function Button({
+  children,
+  variant = 'primary',
+  to,
+  onClick,
   className,
-  type = 'button'
+  type = 'button',
+  disabled = false,
 }: ButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center font-bold rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md";
-  
+  const baseStyles =
+    'inline-flex items-center justify-center font-bold rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md';
+
   const variants = {
-    primary: "bg-brand-teal text-white hover:bg-brand-darkteal",
-    secondary: "bg-brand-orange text-white hover:bg-orange-600",
-    accent: "bg-brand-yellow text-brand-navy hover:bg-yellow-400",
-    outline: "bg-transparent border-2 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white"
+    primary: 'bg-brand-teal text-white hover:bg-brand-darkteal',
+    secondary: 'bg-brand-orange text-white hover:bg-orange-600',
+    accent: 'bg-brand-yellow text-brand-navy hover:bg-yellow-400',
+    outline:
+      'bg-transparent border-2 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white',
   };
 
-  const classes = cn(baseStyles, variants[variant], "px-8 py-3.5 text-lg", className);
+  const classes = cn(
+    baseStyles,
+    variants[variant],
+    'px-8 py-3.5 text-lg',
+    disabled && 'pointer-events-none opacity-70 hover:translate-y-0 hover:shadow-sm',
+    className,
+  );
 
   if (to) {
     return (
-      <Link to={to} className={classes}>
+      <Link to={to} className={classes} aria-disabled={disabled || undefined}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} className={classes} disabled={disabled}>
       {children}
     </button>
   );

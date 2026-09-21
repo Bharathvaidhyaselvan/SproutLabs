@@ -1,11 +1,25 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ComponentType } from "react";
 import { motion, useInView } from "motion/react";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Cpu, Rocket, Sprout, type LucideProps } from "lucide-react";
 import { WaveTop } from "../common/Waves";
 import { DecorativeElement } from "../common/DecorativeElement";
 import { Button } from "../common/Button";
+import { useEnquiryModal } from "../enquiry/EnquiryModalContext";
 
-const ageGroups = [
+type PathwayIcon = ComponentType<LucideProps>;
+
+const ageGroups: {
+  title: string;
+  age: string;
+  grades: string;
+  description: string;
+  color: string;
+  ringGradient: string;
+  pathStrokeEnd: string;
+  delay: number;
+  icon: PathwayIcon;
+  program: string;
+}[] = [
   {
     title: "Junior Innovators",
     age: "Primary School",
@@ -17,7 +31,8 @@ const ageGroups = [
       "conic-gradient(from 0deg, #F5B84D, #2E9B5D, #019CB7, #FB9722, #F5B84D)",
     pathStrokeEnd: "#FB9722",
     delay: 0,
-    icon: "🌱",
+    icon: Sprout,
+    program: "junior",
   },
   {
     title: "STEM Explorers",
@@ -30,7 +45,8 @@ const ageGroups = [
       "conic-gradient(from 0deg, #FB9722, #FFC48A, #F5B84D, #DA5C67, #FB9722)",
     pathStrokeEnd: "#019CB7",
     delay: 0.2,
-    icon: "🚀",
+    icon: Rocket,
+    program: "explorers",
   },
   {
     title: "Tech Pioneers",
@@ -43,7 +59,8 @@ const ageGroups = [
       "conic-gradient(from 0deg, #019CB7, #00A0E0, #5D59D3, #2E9B5D, #019CB7)",
     pathStrokeEnd: "#019CB7",
     delay: 0.4,
-    icon: "⚡",
+    icon: Cpu,
+    program: "pioneers",
   },
 ];
 
@@ -62,6 +79,17 @@ const RING_PULSE_TRANSITION = {
   times: [0, 0.25, 0.5, 0.75, 1],
 };
 
+const ICON_PULSE_ANIMATE = {
+  scale: [1, 1.2, 1, 1.14, 1],
+  rotate: [0, -10, 0, 8, 0],
+  y: [0, -2, 0, -1, 0],
+};
+const ICON_PULSE_TRANSITION = {
+  duration: 0.85,
+  ease: "easeInOut" as const,
+  times: [0, 0.25, 0.5, 0.75, 1],
+};
+
 function PathwayNode({
   group,
   index,
@@ -74,6 +102,8 @@ function PathwayNode({
   const circlePhase = index * 2;
   const isActive = phase === circlePhase;
   const isReached = phase >= circlePhase;
+  const Icon = group.icon;
+  const { openEnquiry } = useEnquiryModal();
 
   return (
     <motion.div
@@ -114,17 +144,25 @@ function PathwayNode({
           >
             <div className="rounded-full bg-white p-[3px]">
               <div
-                className={`flex h-20 w-20 items-center justify-center rounded-full border-4 border-white text-3xl shadow-md sm:h-24 sm:w-24 sm:text-4xl ${group.color}`}
+                className={`flex h-20 w-20 items-center justify-center rounded-full border-4 border-white shadow-md sm:h-24 sm:w-24 ${group.color}`}
               >
-                <span className="select-none">{group.icon}</span>
+                <motion.span
+                  key={isActive ? `icon-pulse-${circlePhase}` : `icon-rest-${circlePhase}`}
+                  className="inline-flex"
+                  initial={{ scale: 1, rotate: 0, y: 0 }}
+                  animate={isActive ? ICON_PULSE_ANIMATE : { scale: 1, rotate: 0, y: 0 }}
+                  transition={isActive ? ICON_PULSE_TRANSITION : { duration: 0.2 }}
+                >
+                  <Icon className="h-9 w-9 text-white sm:h-10 sm:w-10" strokeWidth={2.25} aria-hidden />
+                </motion.span>
               </div>
             </div>
           </motion.div>
         ) : (
           <div
-            className={`flex h-20 w-20 items-center justify-center rounded-full border-4 border-white text-3xl shadow-md sm:h-24 sm:w-24 sm:text-4xl ${group.color}`}
+            className={`flex h-20 w-20 items-center justify-center rounded-full border-4 border-white shadow-md sm:h-24 sm:w-24 ${group.color}`}
           >
-            <span className="select-none">{group.icon}</span>
+            <Icon className="h-9 w-9 text-white sm:h-10 sm:w-10" strokeWidth={2.25} aria-hidden />
           </div>
         )}
       </div>
@@ -143,9 +181,10 @@ function PathwayNode({
           {group.description}
         </p>
         <Button
-          to="/contact-us"
+          type="button"
           variant="primary"
           className="w-full px-5 py-2.5 text-sm shadow-none hover:shadow-md sm:text-base"
+          onClick={() => openEnquiry({ program: group.program })}
         >
           Explore This Pathway
         </Button>
