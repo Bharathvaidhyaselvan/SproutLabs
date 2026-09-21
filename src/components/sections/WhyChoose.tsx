@@ -3,8 +3,7 @@ import { SectionHeading } from "../common/SectionHeading";
 import { DecorativeElement } from "../common/DecorativeElement";
 import { CheckCircle2 } from "lucide-react";
 
-const CENTRAL_IMAGE =
-  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80";
+const CENTRAL_IMAGE = "/site-images/why-choose-us.webp";
 
 const reasons = [
   "Flexible delivery in both online and offline modes",
